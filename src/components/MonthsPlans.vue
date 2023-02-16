@@ -42,7 +42,7 @@
           />
         </div>
 
-        <div v-else class="plans">
+        <div v-if="showAllPlans" class="plans">
           <badge-component
             v-for="(item, index) of allPlans"
             @delete-plan="deletePlan(item.id)"
@@ -72,6 +72,7 @@ export default {
     ...mapGetters({
       selectedMonth: "plans/selectedMonth",
       showPlans: "plans/showPlans",
+      showAllPlans: "plans/showAllPlans"
     }),
   },
   methods: {

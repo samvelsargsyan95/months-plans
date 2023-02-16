@@ -53,6 +53,7 @@ export default {
   computed: {
     ...mapGetters({
       showPlans: "plans/showPlans",
+      showAllPlans: "plans/showAllPlans"
     }),
   },
 
@@ -60,13 +61,12 @@ export default {
     ...mapMutations({
       setData: "plans/setData",
       toggleShowPlans: "plans/toggleShowPlans",
+      toggleShowAllPlans: "plans/toggleShowAllPlans"
     }),
 
     showAll() {
-      this.setData({ 
-        selectedMonth: null,
-        showPlans: true
-      })
+      this.setData({ showPlans: true, selectedMonth: null })
+      this.toggleShowAllPlans({ showAllPlans: !this.showAllPlans })
     },
 
     toggleHide() {

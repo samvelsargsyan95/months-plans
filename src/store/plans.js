@@ -167,6 +167,7 @@ export const plans = {
     ],
     selectedMonth: null,
     showPlans: true,
+    showAllPlans: true
   },
   mutations: {
     setData(state, data) {
@@ -177,6 +178,10 @@ export const plans = {
 
     toggleShowPlans(state) {
       state.showPlans = !state.showPlans
+    },
+
+    toggleShowAllPlans(state) {
+      state.showAllPlans = !state.showAllPlans
     },
 
     deletePlan(state, id) {
@@ -194,5 +199,6 @@ export const plans = {
     monthsList: (state) => state.monthsList,
     selectedMonth: (state) => state.selectedMonth,
     showPlans: (state) => state.showPlans,
+    showAllPlans: (state) => state.showAllPlans
   },
 };
