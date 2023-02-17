@@ -24,7 +24,7 @@
     <div class="d-flex align-center justify-between badge__right-part">
       <div
         :class="{
-          complated: badgeType === 3,
+          Completed: badgeType === 3,
           booked: badgeType === 2,
           'book-now': badgeType === 1,
         }"
@@ -115,7 +115,7 @@ export default {
           statusName = "Booked";
           break;
         case 3:
-          statusName = "Complated";
+          statusName = "Completed";
           break;
       }
 
@@ -140,7 +140,7 @@ export default {
 <style lang="scss" scoped>
 @import "./src/assets/styles";
 
-.complated {
+.Completed {
   color: #5fb05f;
 }
 
