@@ -88,6 +88,7 @@ export default {
       this.setData({
         selectedMonth,
         showAllPlans: false,
+        showPlans: true
       });
     },
   },
