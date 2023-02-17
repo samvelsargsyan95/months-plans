@@ -11,7 +11,15 @@
       py-2
     "
   >
-    <span class="badge__title">{{ title }}</span>
+    <span v-if="!showInput" class="badge__title">{{ title }}</span>
+    <input
+      v-else
+      v-model="badgeTitle"
+      @input="$emit('edit-plan', badgeTitle)"
+      @blur="updateInput"
+      class="badge__input p-1 border-5"
+      type="text"
+    />
 
     <div class="d-flex align-center justify-between badge__right-part">
       <div
@@ -36,18 +44,13 @@
         <div
           v-if="openActions"
           @mouseleave="openActions = false"
-          @click="$emit('delete-plan')"
-          class="
-            cursor-pointer
-            badge__delete
-            position-absolute
-            grey-border
-            radius-10
-            px-4
-            py-1
-          "
+          class="badge__actions position-absolute"
         >
-          Delete
+          <actions-list
+            :open-actions="openActions"
+            @edit-plan="showEditInp"
+            @delete-plan="$emit('delete-plan')"
+          />
         </div>
       </div>
     </div>
@@ -55,14 +58,19 @@
 </template>
 
 <script>
-import ClickOutside from "vue-click-outside";
+import ActionsList from "@/components/ActionsList";
 
 export default {
   name: "BadgeComponent",
+  components: {
+    ActionsList,
+  },
 
   data() {
     return {
       openActions: false,
+      showInput: false,
+      badgeTitle: "",
     };
   },
 
@@ -115,8 +123,16 @@ export default {
     },
   },
 
-  directives: {
-    ClickOutside,
+  methods: {
+    showEditInp() {
+      this.showInput = true;
+      this.badgeTitle = this.title;
+    },
+
+    updateInput() {
+      this.$emit('edit-plan', this.badgeTitle)
+      this.showInput = false;
+    }
   },
 };
 </script>
@@ -149,16 +165,16 @@ export default {
     width: 20%;
   }
 
-  &__delete {
+  &__actions {
     top: -10px;
     left: -67px;
-    background: white;
-    transition: all 0.3s;
+  }
 
-    &:hover {
-      background: rgb(186, 210, 247);
-      color: white;
-    }
+  &__input {
+    border-radius: 5px;
+    border: unset;
+    box-shadow: 2px 2px 4px grey;
+    width: 40%;
   }
 }
 
@@ -174,5 +190,9 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.border-5 {
+  border-radius: 5px;
 }
 </style>

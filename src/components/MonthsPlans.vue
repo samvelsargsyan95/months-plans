@@ -35,6 +35,7 @@
           <badge-component
             v-for="(item, index) of selectedMonth.plans"
             @delete-plan="deletePlan(item.id)"
+            @edit-plan="editPlan(item.id)"
             :key="index"
             :title="item.title"
             :badge-type="item.type"
@@ -46,6 +47,7 @@
           <badge-component
             v-for="(item, index) of allPlans"
             @delete-plan="deletePlan(item.id)"
+            @edit-plan="editPlan({id: item.id, title: $event})"
             :key="index"
             :title="item.title"
             :badge-type="item.type"
@@ -79,6 +81,7 @@ export default {
     ...mapMutations({
       setData: "plans/setData",
       deletePlan: "plans/deletePlan",
+      editPlan: "plans/editPlan"
     }),
 
     selectMonth(selectedMonth) {

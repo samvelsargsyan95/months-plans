@@ -8,7 +8,7 @@ export const plans = {
           {
             id: 1,
             type: 3,
-            title: 'Ozone herapy'
+            title: 'Ozone therapy'
           },
           {
             id: 2,  
@@ -38,7 +38,7 @@ export const plans = {
           {
             id: 5,
             type: 3,
-            title: 'Ozone herapy'
+            title: 'Ozone therapy'
           },
           {
             id: 6,
@@ -53,7 +53,7 @@ export const plans = {
           {
             id: 7,
             type: 1,
-            title: 'Ozone herapy'
+            title: 'Ozone therapy'
           },
           {
             id: 8,
@@ -73,7 +73,7 @@ export const plans = {
           {
             id: 10,
             type: 3,
-            title: 'Ozone herapy'
+            title: 'Ozone therapy'
           },
           {
             id: 11,
@@ -92,7 +92,7 @@ export const plans = {
           {
             id: 12,
             type: 1,
-            title: 'Ozone herapy'
+            title: 'Ozone therapy'
           },
           {
             id: 13,
@@ -112,7 +112,7 @@ export const plans = {
           {
             id: 15,
             type: 3,
-            title: 'Ozone herapy'
+            title: 'Ozone therapy'
           },
           {
             id: 16,
@@ -122,7 +122,7 @@ export const plans = {
           {
             id: 17,
             type: 3,
-            title: 'Ozone herapy'
+            title: 'Ozone therapy'
           }
         ],
       },
@@ -132,7 +132,7 @@ export const plans = {
           {
             id: 18,
             type: 3,
-            title: 'Ozone herapy'
+            title: 'Ozone therapy'
           },
           {
             id: 19,
@@ -189,6 +189,16 @@ export const plans = {
         item.plans.map((plan, index) => {
           if (plan.id === id) {
             item.plans.splice(index, 1)
+          }
+        })
+      })
+    },
+
+    editPlan(state, { id, title }) {
+      state.monthsList.map((item) => {
+        item.plans.map((plan) => {
+          if (plan.id === id) {
+            plan.title = title
           }
         })
       })
