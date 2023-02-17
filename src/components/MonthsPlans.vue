@@ -35,7 +35,7 @@
           <badge-component
             v-for="(item, index) of selectedMonth.plans"
             @delete-plan="deletePlan(item.id)"
-            @edit-plan="editPlan(item.id)"
+             @edit-plan="editPlan({id: item.id, title: $event})"
             :key="index"
             :title="item.title"
             :badge-type="item.type"

@@ -195,13 +195,15 @@ export const plans = {
     },
 
     editPlan(state, { id, title }) {
-      state.monthsList.map((item) => {
-        item.plans.map((plan) => {
-          if (plan.id === id) {
-            plan.title = title
-          }
+      if (title.trim()) {
+        state.monthsList.map((item) => {
+          item.plans.map((plan) => {
+            if (plan.id === id) {
+              plan.title = title
+            }
+          })
         })
-      })
+      }
     }
   },
   actions: {},
