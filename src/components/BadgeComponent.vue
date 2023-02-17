@@ -125,7 +125,7 @@ export default {
 
   methods: {
     showEditInp() {
-      this.showInput = true;
+      this.showInput = !this.showInput;
       this.badgeTitle = this.title;
     },
 
